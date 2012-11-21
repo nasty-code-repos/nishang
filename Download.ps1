@@ -12,7 +12,7 @@ The URL from where the file would be downloaded.
 Name of the file where download would be saved.
 
 .EXAMPLE
-PS > Download http://example.com/file.txt newfile.txt
+PS > .\Download.ps1 http://example.com/file.txt newfile.txt
 
 .LINK
 http://labofapenetrationtester.blogspot.com/

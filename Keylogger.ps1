@@ -16,7 +16,7 @@ Username for the pastebin account where you would upload the data.
 Password for the pastebin account where you would upload the data.
 
 .EXAMPLE
-PS > Keylogger <pastebindev_key> <pastebinusername> <pastebinpass>
+PS > .\Keylogger.ps1 <pastebindev_key> <pastebinusername> <pastebinpass>
 
 .LINK
 http://labofapenetrationtester.blogspot.com/

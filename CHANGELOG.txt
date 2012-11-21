@@ -1,3 +1,15 @@
+0.2.0
+- Removed hard coded strings from DNS TXT Pwnage payload.
+- Information Gather now pastes data base64 encoded, does not trigger pastebin spam filter anymore.
+- Credentials payload now validates both local and AD crdentials. If creds entered could not be validated locally or at AD, credential prompt is shown again.
+- Base64ToString now asks for a file containing base64 string. To provide a string in place of file use "-IsString" parameter.
+- Browse_Accept_Applet now handles prompts for both 32 bit and 64 bit Internet Explorer. The wait time for the applet to load has also been increased .
+- Added Enable_DuplicateToken payload.
+- Added Get-LSASecret payload.
+- Added Get-SqlSysLogin payload.
+- Added Invoke-Medusa payload.
+- Added Invoke-PingSweep payload.
+
 0.1.1
 - Fixed a bug in Parse_Keys. The function Parse_Keys was not being called.
 - Changed help in Wait_For_Command.ps1
