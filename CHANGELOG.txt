@@ -1,3 +1,6 @@
+0.2.1
+- Added Execute-Command-MSSQL payload.
+- Removed Get-SqlSysLogin payload
 0.2.0
 - Removed hard coded strings from DNS TXT Pwnage payload.
 - Information Gather now pastes data base64 encoded, does not trigger pastebin spam filter anymore.
