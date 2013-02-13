@@ -1,6 +1,12 @@
+0.2.5
+- Added Get-WLAN-Keys payload.
+- Added Remove-Update payload.
+- Fixed help in Credentials.ps1
+- Minor changes in Donwload_Execute and Information_Gather.
 0.2.1
 - Added Execute-Command-MSSQL payload.
 - Removed Get-SqlSysLogin payload
+- Fixed a bug in Credentials.ps1
 0.2.0
 - Removed hard coded strings from DNS TXT Pwnage payload.
 - Information Gather now pastes data base64 encoded, does not trigger pastebin spam filter anymore.

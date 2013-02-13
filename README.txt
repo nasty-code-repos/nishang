@@ -10,4 +10,6 @@ Get-Help <scriptname.ps1> -full
 
 Updates about Nishang could be found at my blog http://labofapenetrationtester.blogspot.com/
 
+and my twitter feed @nikhil_mitt
+
 Please report bugs, feedback and feature request to nikhil [dot] uitrgpv at gmail.com

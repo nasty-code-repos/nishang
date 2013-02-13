@@ -73,7 +73,6 @@ $output = $output + "`n Installed Applications:`n" + (registry_values "hklm:\SOF
 $output = $output + "`n Installed Applications for current user:`n" + (registry_values "hkcu:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" "displayname") 
 $output = $output + "`n Domain Name:`n" + (registry_values "hklm:\SOFTWARE\Microsoft\Windows\CurrentVersion\Group Policy\History\" "all" "no") 
 $output = $output + "`n Contents of /etc/hosts:`n" + (get-content -path "C:\windows\System32\drivers\etc\hosts") 
-#####INSTALLED PATCHES#######################
 $output = $output + "`n Running Services:`n" + (net start) 
 $output = $output + "`n Account Policy:`n" + (net accounts) 
 $output = $output + "`n Local users:`n" + (net user) 
