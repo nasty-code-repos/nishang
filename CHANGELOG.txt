@@ -1,3 +1,6 @@
+0.2.6
+- Added Create-MultipleSessions script.
+- Added Run-EXEonRemote script.
 0.2.5
 - Added Get-WLAN-Keys payload.
 - Added Remove-Update payload.
