@@ -22,8 +22,8 @@ http://code.google.com/p/nishang
 Param( [Parameter(Position = 0, Mandatory = $True)] [String] $URL,[Parameter(Position = 1, Mandatory = $True)] [String]$FileName )
 function Download
 {
-$webclient = New-Object System.Net.WebClient
-$file = "$env:temp\$FileName"
-$webclient.DownloadFile($URL,"$file")
+    $webclient = New-Object System.Net.WebClient
+    $file = "$env:temp\$FileName"
+    $webclient.DownloadFile($URL,"$file")
 }
 Download

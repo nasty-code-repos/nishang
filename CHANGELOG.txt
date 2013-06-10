@@ -1,3 +1,12 @@
+0.2.7
+- DNS_TXT_Pwnage, Time_Execution and Wait_For_Command can now be stopped remotely. Also, these does not stop autmoatically after running a script/command now.
+- DNS_TXT_Pwnage, Time_Execution and Wait_For_Command can now return results using selected exfiltration method.
+- Fixed a minor bug in DNS_TXT_Pwnage.
+- All payloads which could post data to the internet now have three options pastebin/gmail/tinypaste for exfiltration.
+- Added Get-PassHashes payload.
+- Added Download-Execute-PS payload.
+- The keylogger logs only fresh keys after exfiltring the keys 30 times.
+- A delay after success has been introduced in various payloads which connect to the internet to avoid generating too much traffic.
 0.2.6
 - Added Create-MultipleSessions script.
 - Added Run-EXEonRemote script.
