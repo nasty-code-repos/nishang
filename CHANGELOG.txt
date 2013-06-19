@@ -1,3 +1,5 @@
+0.2.8
+- Fixed issues while using Get-LSASecret, Get-PassHashes, Get-WLAN-Keys and Information_Gather while using with Powershell v2
 0.2.7
 - DNS_TXT_Pwnage, Time_Execution and Wait_For_Command can now be stopped remotely. Also, these does not stop autmoatically after running a script/command now.
 - DNS_TXT_Pwnage, Time_Execution and Wait_For_Command can now return results using selected exfiltration method.
