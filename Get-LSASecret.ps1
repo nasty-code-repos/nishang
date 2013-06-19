@@ -58,8 +58,8 @@ http://code.google.com/p/nishang
 Goude 2012, TreuSec
 #>
 
-
-Param ([Parameter(Parametersetname="exfil")] [Switch] $exfil,
+[CmdletBinding(DefaultParameterSetName="noexfil")]
+Param ( [Parameter(Parametersetname="exfil")] [Switch]$exfil,
 [Parameter(Position = 0, Parametersetname="exfil")] [Parameter(Position = 0, Parametersetname="noexfil")] [String] $registrykey,
 [Parameter(Position = 1, Mandatory = $True, Parametersetname="exfil")] [String] $dev_key,
 [Parameter(Position = 2, Mandatory = $True, Parametersetname="exfil")] [String]$username,

@@ -44,9 +44,8 @@ http://blogs.technet.com/b/heyscriptingguy/archive/2012/07/05/use-powershell-to-
 http://code.google.com/p/nishang
 
 #> 
-
-Param ( [Parameter(Parametersetname="noexfil")] $noexfil,
-[Parameter(Parametersetname="exfil")] [Switch] $exfil,
+[CmdletBinding(DefaultParameterSetName="noexfil")]
+Param ( [Parameter(Parametersetname="exfil")] [Switch] $exfil,
 [Parameter(Position = 0, Mandatory = $True, Parametersetname="exfil")] [String] $dev_key,
 [Parameter(Position = 1, Mandatory = $True, Parametersetname="exfil")] [String]$username,
 [Parameter(Position = 2, Mandatory = $True, Parametersetname="exfil")] [String]$password,
