@@ -149,4 +149,7 @@ $signature = @"
     [System.Runtime.InteropServices.marshal]::GetLastWin32Error() 
   } 
 }
+
+
+
 Enable-TSDuplicateToken
