@@ -1,3 +1,6 @@
+0.2.9
+- Run-EXEonRemote now accepts custom arguments for the executable.
+- More examples added to the Keylogger.
 0.2.8
 - Fixed issues while using Get-LSASecret, Get-PassHashes, Get-WLAN-Keys and Information_Gather while using with Powershell v2
 0.2.7

