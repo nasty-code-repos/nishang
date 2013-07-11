@@ -86,6 +86,7 @@ function Information_Gather
     $output = $output + "`n Local users:`n" + (net user) 
     $output = $output + "`n Local Groups:`n" + (net localgroup) 
     $output = $output + "`n WLAN Info:`n" + (netsh wlan show all) 
+    $output
     $script:pastevalue = $output
 
 }

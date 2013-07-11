@@ -52,9 +52,9 @@ function Create-MultipleSessions
 
     if ($Creds)
     {
-        $Creds = Get-Credential
-        $CheckCommand = 'gwmi -query "Select IPAddress From Win32_NetworkAdapterConfiguration Where IPEnabled = True" -ComputerName $server -Credential $Creds'
-        $SessionCommand = 'New-PSSession -ComputerName $server -Credential $Creds'
+        $Credentials = Get-Credential
+        $CheckCommand = 'gwmi -query "Select IPAddress From Win32_NetworkAdapterConfiguration Where IPEnabled = True" -ComputerName $server -Credential $Credentials'
+        $SessionCommand = 'New-PSSession -ComputerName $server -Credential $Credentials'
     }
 
     else
