@@ -20,15 +20,15 @@ Use this parameter to make the script create PSSessions to targets on which the 
 Use this parameter to get verbose error messages.
 
 .EXAMPLE
-PS > .\Create-MultipleSessions -filename .\servers.txt
+PS > .\Create-MultipleSessions.ps1 -filename .\servers.txt
 Above command uses the credentials available with current powershell session and checks it against multiple computers specified in servers.txt
 
 .EXAMPLE
-PS > .\Create-MultipleSessions -filename .\servers.txt -Creds
+PS > .\Create-MultipleSessions.ps1 -filename .\servers.txt -Creds
 Above command asks the user to provide username and passowrd to check on remote computers.
 
 .EXAMPLE
-PS > .\Create-MultipleSessions -filename .\servers.txt -CreateSessions
+PS > .\Create-MultipleSessions.ps1 -filename .\servers.txt -CreateSessions
 Above command uses the credentials available with current powershell session, checks it against multiple computers specified in servers.txt and creates PSSession for those.
 
 .LINK

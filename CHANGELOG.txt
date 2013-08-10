@@ -1,3 +1,16 @@
+0.3.0
+- Added Powerpreter
+- Added Execute-DNSTXT-Code
+- Bug fix in Create-MultipleSessions.
+- Changes to StringToBase64. It now supports Unicode encoding which makes it usable with -Encodedcommand.
+- More Changes to StringToBase64. Now a file can be converted.
+- Added Copy-VSS
+- Information_Gather shows output in better format now.
+- Information_Gather renamed to Get-Information.
+- Wait for command renamed to HTTP-Backdoor.
+- Time_Execution renamed Execute-OnTime
+- Invoke-PingSweep renamed to Port-Scan
+- Invoke-Medusa renamed to Brute-Force
 0.2.9
 - Run-EXEonRemote now accepts custom arguments for the executable.
 - More examples added to the Keylogger.

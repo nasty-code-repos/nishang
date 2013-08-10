@@ -10,11 +10,11 @@ and copies  the SAM file which could be used to dump password hashes from it. Th
 The path where SAM file would be saved. The folder must exist already.
 
 .EXAMPLE
-PS > .\VSS.ps1
+PS > .\Copy-VSS.ps1
 Saves the SAM file in current run location of the payload.
 
 .Example
-PS > .\VSS.ps1 -path C:\temp\SAM
+PS > .\Copy-VSS.ps1 -path C:\temp\SAM
 
 .LINK
 http://www.canhazcode.com/index.php?a=4
