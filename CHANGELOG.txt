@@ -1,3 +1,6 @@
+0.3.1
+- Pivot now accepts multiple computers as input.
+- Added Use-Session to interact with sessions created using Pivot.
 0.3.0
 - Added Powerpreter
 - Added Execute-DNSTXT-Code

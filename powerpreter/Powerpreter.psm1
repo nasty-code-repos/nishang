@@ -3102,7 +3102,7 @@ The functionality uses powershell remoting to connect to remote machines. Pivoti
 Credentials are required to use this function. Username/pass or a shell with rights to access remote machines could be used as credentials.
 
 .PARAMETER Computer
-Name of the computer to connect to.
+Name of the computer(s) to connect to. 
 
 .PARAMETER User
 Username to be used to connect to the target (optional).
@@ -3119,11 +3119,12 @@ If specified, the pivtoing is non-interactive. It is interactive by default.
 .EXAMPLE
 PS > Pivot -Computer <target>
 Above command uses the credentials available with current powershell session (or other shell) to connect to target.
-It provides an interactive pivot.
+It creates PSSsessions. Use Use-Session to interact with the created sessions.
 
 .EXAMPLE
-PS > Pivot -Computer <target> -User Administrator -Pass P@ssword123#  
-Above command asks the user to provide username and passowrd and provides an interactive pivot.
+PS > Pivot -Computer <Get-Content .\targets.txt> -User Administrator -Pass P@ssword123#  
+Above command asks the user to provide username and passowrd and creates PSSessions. Use Use-Session to
+interact with the created sessions.
 
 PS > Pivot -Computer <target> -cmd Get-Process -Non_Interactive
 Above command uses the credentials available with current powershell session (or other shell) to connect to target.
@@ -3131,17 +3132,16 @@ It provides a non-interactive pivot. Get-Process is executed on the target.
 
 .EXAMPLE
 PS > Pivot -Computer <target> -User Administrator -Pass P@ssword123# -cmd Get-Process 
-Above command asks the user to provide username and passowrd and provides a non-interactive pivot.
-Get-Process is executed on the target.
+Above command asks the user to provide username and passowrd and creates PSSessions.
+Get-Process is executed on the target. Use Use-Session to interact with the created sessions.
 
 .LINK
-http://labofapenetrationtester.blogspot.com/2013/04/poshing-the-hashes.html
 http://code.google.com/p/nishang
 #>
 
 
 
-    Param ( [Parameter(Position = 0, Mandatory = $True)] [String] $Computer,
+    Param ( [Parameter(Position = 0, Mandatory = $True)] [String[]] $Computer,
         [Parameter(Position = 1)] [String] $User,
         [Parameter(Position = 2)] [String] $Pass,
         [Parameter(Position = 3)] [String] $cmd,
@@ -3154,27 +3154,17 @@ http://code.google.com/p/nishang
         {
             $Passwd = ConvertTo-SecureString $Pass -AsPlainText -Force
             $Creds = New-Object System.Management.Automation.PSCredential ($User, $Passwd)
-            #$Creds = get-credential
-            
-            $Sess = New-PSSession -ComputerName $Computer -Credential $Creds
-            while($cmd -ne "exit")
+            foreach ($comp in $Computer)
             {
-            write-host -NoNewline "$Computer> "
-            $cmd = read-host
-            $sb = [scriptblock]::Create($cmd)
-            Invoke-Command -ScriptBlock $sb -Session $Sess
+
+                New-PSSession -ComputerName $comp -Credential $Creds
             }
+
         }
         else
         {
-            $Sess = New-PSSession -ComputerName $Computer
-            while($cmd -ne "exit")
-            {
-            write-host -NoNewline "$Computer> "
-            $cmd = read-host
-            $sb = [scriptblock]::Create($cmd)
-            Invoke-Command -ScriptBlock $sb -Session $Sess
-            }
+            New-PSSession -ComputerName $Computer
+
         }
     }
     #Non-Interactive pivoting (command execution on remote machines) using Invoke-Command
@@ -3185,17 +3175,57 @@ http://code.google.com/p/nishang
             
             $Passwd = ConvertTo-SecureString $Pass -AsPlainText -Force
             $Creds = New-Object System.Management.Automation.PSCredential ($User, $Passwd)
-            #$Creds = get-credential
             $sb = [scriptblock]::Create($cmd)
-            $result = Invoke-Command -ComputerName $Computer -Credential $Creds -ScriptBlock $sb
-            $result
+            foreach ($comp in $Computer)
+            {
+                $result = Invoke-Command -ComputerName $comp -Credential $Creds -ScriptBlock $sb
+                "Output of command on $comp " + $result
+            }
         }
         else
         {
-            Invoke-Command -ComputerName $Computer -ScriptBlock {$Command}
+            foreach ($comp in $Computer)
+            {
+                Invoke-Command -ComputerName $comp -ScriptBlock {$Command}
+            }
+            
         }
     }
     
+}
+
+function Use-Session
+{
+<#
+.SYNOPSIS
+Function which could be used to interact with sessions created using Pivot.
+
+.DESCRIPTION
+The functionality allows to interact with sessions created using the Pivot function. Use Get-PSSSession to
+list the sessions created using Pivot.
+
+.PARAMETER id
+ID of the session to interact with. 
+
+.EXAMPLE
+PS > Use-Session -id <id>
+Above command uses the credentials available with current powershell session (or other shell) to connect to target.
+It creates PSSsessions. Use Use-Session to interact with the created sessions.
+
+.LINK
+http://code.google.com/p/nishang
+#>
+Param ( [Parameter(Position = 0, Mandatory = $True)] $id)
+
+    while($cmd -ne "exit")
+    {
+        $sess = Get-PSSession -Id $id
+        $computername = $sess.ComputerName
+        write-host -NoNewline "$computername> "
+        $cmd = read-host
+        $sb = [scriptblock]::Create($cmd)
+        Invoke-Command -ScriptBlock $sb -Session $sess
+    }
 }
 
 

