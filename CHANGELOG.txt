@@ -1,3 +1,9 @@
+0.3.2
+- Added Persistence to Keylogger, DNS_TXT_Pwnage, Execute_OnTime, HTTP-Backdoor and Powerpreter.
+- Scirpts are now arranged in different directories.
+- Added Add-Persistence.ps1 and Remove-Persistence.ps1
+- Fixed minor bugs in scripts which use two parameterset.
+- Invoke-NinjaCopy has been removed.
 0.3.1
 - Pivot now accepts multiple computers as input.
 - Added Use-Session to interact with sessions created using Pivot.
