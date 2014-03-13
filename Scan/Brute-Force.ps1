@@ -29,7 +29,8 @@ Enter a Service. Default service is set to SQL.
 "SRV01","SRV02","SRV03" | .\Brute-Force.ps1 -UserName sa -Password sa
 
 .EXAMPLE
-.\Brute-Force.ps1 -Identity "domain.local" -UserName administrator -Password Password1 -Service ActiveDirectory
+Import-CSV .\username.txt | .\Brute-Force.ps1 -Identity “targetdomain“ -Password Password1 -Service ActiveDirectory 
+
 
 .EXAMPLE
 .\Brute-Force.ps1 -Identity "http://www.something.com" -UserName user001 -Password Password1 -Service Web
@@ -62,7 +63,7 @@ Goude 2012, TreuSec
     [string]$Service = "SQL"
   )
   
-  function Invoke-TSMedusa {
+  function Brute-Force {
   
   Process {
     if($service -eq "SQL") {
@@ -160,4 +161,4 @@ Goude 2012, TreuSec
   }
 }
 
-Invoke-TSMedusa
+Brute-Force
