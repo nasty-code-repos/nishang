@@ -18,10 +18,10 @@ Enter a UserName for a SQL server administrator account.
 Enter the Password for the account.
 
 .EXAMPLE
-.\Execute-Command-MSSQL.ps1 -ComputerName sqlserv01 -UserName sa -Password sa1234
+PS> .\Execute-Command-MSSQL.ps1 -ComputerName sqlserv01 -UserName sa -Password sa1234
 
 .EXAMPLE
-.\Execute-Command-MSSQL.ps1 -ComputerName 192.168.1.10 -UserName sa -Password sa1234
+PS> .\Execute-Command-MSSQL.ps1 -ComputerName 192.168.1.10 -UserName sa -Password sa1234
 
 .LINK
 http://labofapenetrationtester.blogspot.com/

