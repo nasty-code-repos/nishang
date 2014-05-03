@@ -1,4 +1,3 @@
-
 <#
 .SYNOPSIS
 Nishang payload which could be used to execute commands remotely on a MS SQL server.

@@ -1,3 +1,6 @@
+0.3.3
+- Minor bug fix in Copy-VSS.ps1
+- Bug fix in Keylogger.ps1. It should log keys from a remote shell now (not powershell remoting).
 0.3.2.2
 - Download_Execute_PS.ps1 can now download and execute a Powershell script without writing it to disk.
 - Execute_OnTime.ps1 and HTTP-Backdoor.ps1 executed the payload without downloading a file to disk.

