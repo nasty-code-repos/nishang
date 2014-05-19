@@ -1,3 +1,5 @@
+0.3.4
+- Minor improvements in StringtoBase64.ps1
 0.3.3
 - Minor bug fix in Copy-VSS.ps1
 - Bug fix in Keylogger.ps1. It should log keys from a remote shell now (not powershell remoting).
